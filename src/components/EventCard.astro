@@ -1,0 +1,89 @@
+---
+interface Props {
+  title: string;
+  date: string;
+  time?: string;
+  venue?: string;
+  description: string;
+  category?: string;
+  href: string;
+  registrationUrl?: string;
+  backgroundImage?: string;
+}
+
+const { title, date, time, venue, description, category, href, registrationUrl, backgroundImage } = Astro.props;
+
+const formattedDate = new Date(date).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+{backgroundImage ? (
+  <article class="event-card group relative flex flex-col overflow-hidden transition-all duration-300 hover:shadow-whisper hover:-translate-y-1 scroll-animate" style="min-height: 320px;">
+    <div class="absolute inset-0 z-0">
+      <img 
+        src={backgroundImage} 
+        alt="" 
+        class="h-full w-full object-cover blur-[2.5%] grayscale transition-all duration-500 group-hover:grayscale-0"
+        loading="lazy"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30 transition-opacity duration-500 group-hover:opacity-70"></div>
+    </div>
+
+    <div class="relative z-10 flex flex-1 flex-col gap-3 p-5">
+      <div class="flex flex-wrap items-center gap-2">
+        {category && (
+          <span class="rounded-full bg-white/20 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">{category}</span>
+        )}
+        <time class="text-xs text-white/70">{formattedDate}</time>
+      </div>
+
+      <div>
+        <a href={href} class="font-semibold text-white no-underline hover:text-white/90" style="font-size: 1.25rem; line-height: 1.4; letter-spacing: -0.02em;">
+          {title}
+        </a>
+        {venue && (
+          <p class="mt-1 text-xs text-white/60">{venue}{time ? ` · ${time}` : ''}</p>
+        )}
+      </div>
+
+      <p class="text-sm leading-6 text-white/80">{description}</p>
+
+      <div class="mt-auto flex gap-2">
+        <a href={href} class="rounded-full bg-white px-4 py-2 text-xs font-medium text-black no-underline transition-colors hover:bg-white/90">View Details</a>
+        {registrationUrl && (
+          <a href={registrationUrl} target="_blank" rel="noopener noreferrer" class="rounded-full border border-white/30 px-4 py-2 text-xs font-medium text-white no-underline transition-colors hover:bg-white/10">Register</a>
+        )}
+      </div>
+    </div>
+  </article>
+) : (
+  <article class="feature-card flex flex-col gap-4 transition-all duration-300 hover:shadow-whisper hover:-translate-y-1 scroll-animate">
+    <div class="flex flex-wrap items-center gap-2">
+      {category && (
+        <span class="btn-pill">{category}</span>
+      )}
+      <time class="text-xs text-mute">{formattedDate}</time>
+    </div>
+
+    <div>
+      <a href={href} class="font-semibold text-ink no-underline hover:text-link" style="font-size: 1.25rem; line-height: 1.4; letter-spacing: -0.02em;">
+        {title}
+      </a>
+      {venue && (
+        <p class="mt-1 text-xs text-mute">{venue}{time ? ` · ${time}` : ''}</p>
+      )}
+    </div>
+
+    <p class="text-sm leading-6 text-body">{description}</p>
+
+    <div class="mt-auto flex gap-2">
+      <a href={href} class="btn-sm">View Details</a>
+      {registrationUrl && (
+        <a href={registrationUrl} target="_blank" rel="noopener noreferrer" class="btn-ghost">Register</a>
+      )}
+    </div>
+  </article>
+)}

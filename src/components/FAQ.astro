@@ -1,0 +1,75 @@
+---
+const faqs = [
+  {
+    question: 'What is TCET AAAI?',
+    answer: 'TCET AAAI is the official student chapter of the Association for the Advancement of Artificial Intelligence (AAAI) at Thakur College of Engineering & Technology, Mumbai. We are a community of 200+ students passionate about AI, machine learning, and the future of technology.',
+  },
+  {
+    question: 'Who can join TCET AAAI?',
+    answer: 'Any student at Thakur College of Engineering & Technology can join, regardless of their branch or year of study. No prior experience in AI or programming is required — only curiosity and a willingness to learn.',
+  },
+  {
+    question: 'Do I need prior experience in AI to join?',
+    answer: 'No! TCET AAAI is designed for all skill levels. We host beginner-friendly workshops that start from the basics, as well as advanced sessions for experienced members. Our community and peer learning approach ensures that everyone can learn at their own pace.',
+  },
+  {
+    question: 'What types of events does TCET AAAI organize?',
+    answer: 'We organize hands-on workshops, hackathons, speaker sessions with industry experts, study groups, and project collaborations. Events cover topics like machine learning, deep learning, NLP, computer vision, generative AI, and more.',
+  },
+  {
+    question: 'Is there a membership fee?',
+    answer: 'TCET AAAI does not charge a membership fee. Some events may have a nominal registration fee to cover logistics, but many of our workshops and sessions are free for all members.',
+  },
+  {
+    question: 'How can I stay updated on upcoming events?',
+    answer: 'Follow us on <a href="https://www.instagram.com/aaai.tcet/" target="_blank" rel="noopener noreferrer">Instagram</a> and <a href="https://www.linkedin.com/company/tcet-aaai" target="_blank" rel="noopener noreferrer">LinkedIn</a> for real-time updates. You can also check our <a href="/events">events page</a> for the latest schedule.',
+  },
+  {
+    question: 'What is AAAI and why is the affiliation important?',
+    answer: 'AAAI (Association for the Advancement of Artificial Intelligence) is the world\'s leading professional society for AI research and education. Our affiliation connects TCET AAAI to a global network of AI researchers, practitioners, and students, providing access to resources, publications, and conferences worldwide.',
+  },
+];
+---
+
+<section class="border-t border-hairline bg-canvas">
+  <div class="mx-auto max-w-[800px] px-6 py-12 md:py-20 lg:py-24">
+    <div class="text-center">
+      <p class="mono-eyebrow mb-2">FAQ</p>
+      <h2 class="mb-4 font-semibold text-ink" style="font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.25; letter-spacing: -0.04em;">
+        Frequently Asked Questions
+      </h2>
+      <p class="mx-auto mb-10 max-w-[28rem] text-sm text-body">
+        Everything you need to know about TCET AAAI and how to get involved.
+      </p>
+    </div>
+
+    <div class="faq-list">
+      {faqs.map((faq) => (
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>{faq.question}</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p set:html={faq.answer} />
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach((item) => {
+      const button = item.querySelector('.faq-question');
+      button?.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        faqItems.forEach((other) => other.classList.remove('active'));
+        if (!isActive) item.classList.add('active');
+        button.setAttribute('aria-expanded', String(!isActive));
+      });
+    });
+  });
+</script>

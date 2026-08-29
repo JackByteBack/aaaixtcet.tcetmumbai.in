@@ -1,11 +1,205 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import StatCounter from '../components/StatCounter.astro';
+import EventCard from '../components/EventCard.astro';
+import LoadingScreen from '../components/LoadingScreen.astro';
+import Footer from '../components/Footer.astro';
+import { getCollection } from 'astro:content';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const allEvents = await getCollection('events');
+const upcomingEvents = allEvents
+  .filter((e) => e.data.upcoming)
+  .sort((a, b) => a.data.date.getTime() - b.data.date.getTime())
+  .slice(0, 2);
+
+const pastEvents = allEvents
+  .filter((e) => !e.data.upcoming)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 3);
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+  title="TCET AAAI"
+  description="TCET AAAI is the official student chapter of the Association for the Advancement of Artificial Intelligence (AAAI) at Thakur College of Engineering & Technology, Mumbai. Join 200+ students learning AI, machine learning, deep learning, NLP, and more through workshops, hackathons, and speaker sessions."
+>
+  <LoadingScreen />
+  <Navbar />
+
+  <Hero
+    eyebrow="Student Chapter at TCET"
+    heading="Advancing Artificial Intelligence Together"
+    subheading="TCET AAAI is a community of students passionate about AI, machine learning, and the future of technology. We learn, build, and grow together."
+    primaryCta={{ label: 'Upcoming Events', href: '/events' }}
+    secondaryCta={{ label: 'About Us', href: '/about' }}
+  />
+
+  <!-- Stats -->
+  <section class="border-y border-hairline bg-canvas">
+    <div class="mx-auto grid max-w-[1200px] grid-cols-2 gap-6 px-6 py-8 md:grid-cols-4 md:gap-8 md:py-16">
+      <StatCounter label="Active Members" value="200+" />
+      <StatCounter label="Events Held" value="30+" />
+      <StatCounter label="Since" value="2023" />
+      <StatCounter label="Workshops" value="15+" />
+    </div>
+  </section>
+
+  <!-- Upcoming Events -->
+  {upcomingEvents.length > 0 && (
+    <section class="bg-canvas">
+      <div class="mx-auto max-w-[1200px] px-6 py-12 md:py-20 lg:py-24">
+        <div class="scroll-animate">
+          <p class="mono-eyebrow mb-2">Coming Up</p>
+          <h2 class="mb-8 font-semibold text-ink" style="font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.25; letter-spacing: -0.04em;">
+            Upcoming Events
+          </h2>
+        </div>
+        <div class="grid gap-6 md:grid-cols-2">
+          {upcomingEvents.map((event, index) => (
+            <div class={`scroll-animate delay-${(index + 1) * 100}`}>
+              <EventCard
+                title={event.data.title}
+                date={event.data.date.toISOString()}
+                time={event.data.time}
+                venue={event.data.venue}
+                description={event.data.description}
+                category={event.data.category}
+                href={`/events/${event.id}`}
+                registrationUrl={event.data.registrationUrl}
+                backgroundImage={event.id === 'intro-to-ml-workshop' ? '/images/among us ehe.jpg' : undefined}
+              />
+            </div>
+          ))}
+        </div>
+        <div class="mt-8 text-center scroll-animate">
+          <a href="/events" class="btn-secondary">View All Events</a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Past Events -->
+  {pastEvents.length > 0 && (
+    <section class="border-t border-hairline bg-canvas">
+      <div class="mx-auto max-w-[1200px] px-6 py-12 md:py-20 lg:py-24">
+        <div class="scroll-animate">
+          <p class="mono-eyebrow mb-2">Archive</p>
+          <h2 class="mb-8 font-semibold text-ink" style="font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.25; letter-spacing: -0.04em;">
+            Past Events
+          </h2>
+        </div>
+        <div class="grid gap-6 md:grid-cols-3">
+          {pastEvents.map((event, index) => (
+            <div class={`scroll-animate delay-${(index + 1) * 100}`}>
+              <EventCard
+                title={event.data.title}
+                date={event.data.date.toISOString()}
+                venue={event.data.venue}
+                description={event.data.description}
+                category={event.data.category}
+                href={`/events/${event.id}`}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- What We Do -->
+  <section class="border-t border-hairline bg-canvas">
+      <div class="mx-auto max-w-[1200px] px-6 py-12 md:py-20 lg:py-24">
+        <div class="scroll-animate">
+          <p class="mono-eyebrow mb-2">What We Do</p>
+          <h2 class="mb-8 font-semibold text-ink" style="font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.25; letter-spacing: -0.04em;">
+            Building the AI Community at TCET
+          </h2>
+        </div>
+        <div class="grid gap-6 md:grid-cols-3">
+          <div class="feature-card scroll-animate-left delay-100">
+            <div class="mb-3 flex h-10 w-10 items-center justify-center rounded-md bg-hairline-soft">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-ink">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                <path d="M2 17l10 5 10-5"></path>
+                <path d="M2 12l10 5 10-5"></path>
+              </svg>
+            </div>
+            <h3 class="mb-2 text-sm font-semibold text-ink">Workshops & Training</h3>
+            <p class="text-sm leading-6 text-body">
+              Hands-on workshops on machine learning, deep learning, NLP, computer vision, and more.
+            </p>
+          </div>
+          <div class="feature-card scroll-animate delay-200">
+            <div class="mb-3 flex h-10 w-10 items-center justify-center rounded-md bg-hairline-soft">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-ink">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <h3 class="mb-2 text-sm font-semibold text-ink">Speaker Sessions</h3>
+            <p class="text-sm leading-6 text-body">
+              Industry experts and researchers share insights on cutting-edge AI topics and career paths.
+            </p>
+          </div>
+          <div class="feature-card scroll-animate-right delay-300">
+            <div class="mb-3 flex h-10 w-10 items-center justify-center rounded-md bg-hairline-soft">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-ink">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+              </svg>
+            </div>
+            <h3 class="mb-2 text-sm font-semibold text-ink">Hackathons & Competitions</h3>
+            <p class="text-sm leading-6 text-body">
+              Compete, collaborate, and build innovative AI solutions in team-based hackathons.
+            </p>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <!-- Location -->
+  <section class="border-t border-hairline bg-canvas">
+    <div class="mx-auto max-w-[1200px] px-6 py-12 md:py-20 lg:py-24">
+      <div class="scroll-animate">
+        <p class="mono-eyebrow mb-2">Find Us</p>
+        <h2 class="mb-8 font-semibold text-ink" style="font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.25; letter-spacing: -0.04em;">
+          Our Location
+        </h2>
+      </div>
+      <div class="scroll-animate overflow-hidden rounded-2xl border border-hairline">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3768.0!2d72.856!3d19.206!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b0e57647569d%3A0xc0aec329c82d3555!2sThakur%20College%20of%20Engineering%20and%20Technology!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+          width="100%"
+          height="400"
+          style="border:0; filter: grayscale(0.2);"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="TCET Location"
+          class="w-full"
+        ></iframe>
+      </div>
+      <div class="mt-6 flex flex-wrap items-center justify-center gap-4 text-sm text-body scroll-animate">
+        <div class="flex items-center gap-2">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-mute">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <span>Thakur College of Engineering & Technology, Kandivali East, Mumbai</span>
+        </div>
+        <a
+          href="https://maps.google.com/?q=Thakur+College+of+Engineering+and+Technology,+Mumbai"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-link transition-colors hover:underline"
+        >
+          Open in Google Maps →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
 </Layout>

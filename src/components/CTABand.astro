@@ -1,0 +1,34 @@
+---
+interface Props {
+  heading?: string;
+  subheading?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+  dark?: boolean;
+}
+
+const {
+  heading = 'Ready to join TCET AAAI?',
+  subheading = 'Be part of the largest AI community at TCET. Stay updated on events, workshops, and opportunities.',
+  ctaLabel = 'Get in Touch',
+  ctaHref = '/contact',
+  dark = false,
+} = Astro.props;
+---
+
+<section class:list={[dark ? 'bg-[#0a0a0a]' : 'bg-canvas']}>
+  <div class="mx-auto max-w-[1200px] px-6 py-12 text-center md:py-20 lg:py-28">
+    <div class="scroll-animate-scale">
+      <h2
+        class:list={['mb-4 font-semibold', dark ? 'text-[#f0f0f0]' : 'text-ink']}
+        style="font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.25; letter-spacing: -0.04em;"
+      >
+        {heading}
+      </h2>
+      {subheading && (
+        <p class:list={['mb-8', dark ? 'text-[#b0b0b0]' : 'text-body']} style="max-width: 38rem; margin-inline: auto;">{subheading}</p>
+      )}
+      <a href={ctaHref} class="btn-primary">{ctaLabel}</a>
+    </div>
+  </div>
+</section>

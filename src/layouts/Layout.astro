@@ -1,23 +1,94 @@
+---
+import '../styles/app.css';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  canonicalURL?: string;
+}
+
+const {
+  title,
+  description,
+  image = '/images/og-default.png',
+  canonicalURL = Astro.url.href,
+} = Astro.props;
+
+const siteTitle = 'TCET AAAI';
+const fullTitle = title === siteTitle ? title : `${title} | ${siteTitle}`;
+---
+
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.site)} />
+    <meta property="og:site_name" content={siteTitle} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(image, Astro.site)} />
+
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+
+    <!-- Geist Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <meta name="generator" content={Astro.generator} />
+    <title>{fullTitle}</title>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "TCET AAAI",
+      "alternateName": "Thakur College of Engineering & Technology - Association for the Advancement of Artificial Intelligence",
+      "url": "https://tcetaaai.tcetmumbai.in",
+      "logo": "https://tcetaaai.tcetmumbai.in/favicon.svg",
+      "description": "The official student chapter of the Association for the Advancement of Artificial Intelligence (AAAI) at Thakur College of Engineering & Technology, Mumbai.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Thakur Village, Kandivali East",
+        "addressLocality": "Mumbai",
+        "addressRegion": "Maharashtra",
+        "postalCode": "400101",
+        "addressCountry": "IN"
+      },
+      "email": "aaai@tcetmumbai.in",
+      "sameAs": [
+        "https://www.instagram.com/aaai.tcet/",
+        "https://www.linkedin.com/company/tcet-aaai"
+      ],
+      "founder": {
+        "@type": "Organization",
+        "name": "TCET AAAI"
+      },
+      "parentOrganization": {
+        "@type": "CollegeOrUniversity",
+        "name": "Thakur College of Engineering & Technology"
+      }
+    })} />
+  </head>
+  <body>
+    <slot />
+    <script src="/scripts/scroll-animations.js" defer></script>
+  </body>
+</html>

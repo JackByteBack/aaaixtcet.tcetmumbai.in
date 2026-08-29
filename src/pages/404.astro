@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Page Not Found"
+  description="The page you're looking for doesn't exist."
+>
+  <Navbar />
+
+  <section class="flex min-h-[60vh] items-center justify-center bg-canvas">
+    <div class="px-6 text-center">
+      <p class="mono-eyebrow mb-2">404</p>
+      <h1 class="mb-4 font-semibold text-ink" style="font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.25; letter-spacing: -0.04em;">
+        Page Not Found
+      </h1>
+      <p class="mx-auto mb-8 max-w-[28rem] text-left text-body">
+        The page you're looking for doesn't exist or has been moved. Let's get you back on track.
+      </p>
+      <div class="flex justify-center gap-3">
+        <a href="/" class="btn-primary">Go Home</a>
+        <a href="/events" class="btn-secondary">View Events</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

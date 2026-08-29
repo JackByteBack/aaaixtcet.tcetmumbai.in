@@ -1,0 +1,13 @@
+---
+interface Props {
+  label: string;
+  value: string;
+}
+
+const { label, value } = Astro.props;
+---
+
+<div class="text-center scroll-animate-scale">
+  <p class="text-3xl font-semibold tracking-tight text-ink md:text-4xl stat-animate" data-target={value}>{value}</p>
+  <p class="mt-1 text-sm text-mute">{label}</p>
+</div>

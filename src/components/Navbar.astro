@@ -1,0 +1,133 @@
+---
+interface Props {
+  hideThemeToggle?: boolean;
+  dark?: boolean;
+}
+
+const { hideThemeToggle = false, dark = false } = Astro.props;
+
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/events', label: 'Events' },
+  { href: '/team', label: 'Team' },
+  { href: '/achievements', label: 'Achievements' },
+  { href: '/contact', label: 'Contact' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav class:list={[
+  "sticky top-0 z-50 border-b backdrop-blur-md",
+  dark ? "border-[#2a2a2a] bg-black/90" : "border-hairline bg-canvas/80 dark:border-hairline dark:bg-canvas/80"
+]}>
+  <div class="mx-auto max-w-[1200px] px-4 sm:px-6">
+    <div class="flex h-14 items-center justify-between">
+      <a href="/" class:list={["flex items-center gap-2 no-underline", dark ? "text-white" : "text-ink"]}>
+        <span class="font-mono text-sm font-semibold tracking-wide uppercase">TCET AAAI</span>
+      </a>
+
+      <!-- Desktop nav -->
+      <div class="hidden items-center gap-1 md:flex">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              'rounded-full px-3 py-1.5 text-sm no-underline transition-colors',
+              currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href))
+                ? dark ? 'text-white font-medium' : 'text-ink font-medium'
+                : dark ? 'text-gray-400 hover:text-white' : 'text-body hover:text-ink',
+            ]}
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+
+      <div class="flex items-center gap-2">
+        <!-- Mobile menu button -->
+        <button
+          id="mobile-menu-toggle"
+          class:list={[
+            "flex h-8 w-8 items-center justify-center rounded-md border md:hidden",
+            dark ? "border-[#3a3a3a] bg-[#1a1a1a] text-white" : "border-hairline bg-canvas-elevated text-ink"
+          ]}
+          aria-label="Toggle menu"
+        >
+          <svg id="hamburger-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path id="line-top" d="M2 4h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="transition: all 0.3s ease; transform-origin: center;"/>
+            <path id="line-mid" d="M2 8h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="transition: all 0.3s ease; transform-origin: center;"/>
+            <path id="line-bot" d="M2 12h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="transition: all 0.3s ease; transform-origin: center;"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class:list={[
+      "grid border-t md:hidden",
+      dark ? "border-[#2a2a2a] bg-black" : "border-hairline bg-canvas dark:border-hairline dark:bg-canvas"
+    ]} style="grid-template-rows: 0fr; transition: grid-template-rows 0.3s ease, opacity 0.3s ease; opacity: 0;">
+      <div class="min-h-0 overflow-hidden">
+        <div class="flex flex-col gap-1 py-2">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              'rounded-md px-3 py-2 text-sm no-underline transition-colors',
+              currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href))
+                ? dark ? 'bg-[#1a1a1a] text-white font-medium' : 'bg-hairline-soft dark:bg-hairline-soft text-ink font-medium'
+                : dark ? 'text-gray-400 hover:bg-[#1a1a1a] hover:text-white' : 'text-body hover:bg-hairline-soft dark:hover:bg-hairline-soft hover:text-ink',
+            ]}
+          >
+            {link.label}
+          </a>
+        ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const toggle = document.getElementById('mobile-menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const lineTop = document.getElementById('line-top');
+  const lineMid = document.getElementById('line-mid');
+  const lineBot = document.getElementById('line-bot');
+
+  let isOpen = false;
+
+  function closeMenu() {
+    isOpen = false;
+    menu?.style.setProperty('grid-template-rows', '0fr');
+    menu?.style.setProperty('opacity', '0');
+    lineTop?.setAttribute('d', 'M2 4h12');
+    lineMid?.setAttribute('d', 'M2 8h12');
+    lineBot?.setAttribute('d', 'M2 12h12');
+    lineMid?.setAttribute('opacity', '1');
+  }
+
+  function openMenu() {
+    isOpen = true;
+    menu?.style.setProperty('grid-template-rows', '1fr');
+    menu?.style.setProperty('opacity', '1');
+    lineTop?.setAttribute('d', 'M4 4L12 12');
+    lineMid?.setAttribute('d', 'M8 8L8 8');
+    lineBot?.setAttribute('d', 'M4 12L12 4');
+    lineMid?.setAttribute('opacity', '0');
+  }
+
+  toggle?.addEventListener('click', () => {
+    if (isOpen) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  menu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', closeMenu);
+  });
+</script>

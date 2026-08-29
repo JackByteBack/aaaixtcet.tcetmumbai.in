@@ -1,0 +1,157 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Contact"
+  description="Get in touch with TCET AAAI — reach out for queries, collaborations, or to join the chapter."
+>
+  <Navbar />
+
+  <Hero
+    eyebrow="Contact"
+    heading="Get in Touch"
+    subheading="Have a question, want to collaborate, or interested in joining? We'd love to hear from you."
+  />
+
+  <section class="border-t border-hairline bg-canvas">
+    <div class="mx-auto max-w-[1200px] px-6 py-12 md:py-20 lg:py-24">
+      <div class="grid gap-8 md:grid-cols-2 md:gap-12">
+        <!-- Contact Info -->
+        <div>
+          <p class="mono-eyebrow mb-2">Reach Out</p>
+          <h2 class="mb-6 font-semibold text-ink" style="font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.25; letter-spacing: -0.04em;">
+            Contact Information
+          </h2>
+
+          <div class="flex flex-col gap-6">
+            <div class="flex items-start gap-4">
+              <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-hairline-soft">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-ink">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-sm font-semibold text-ink">Email</h3>
+                <a href="mailto:aaai@tcetmumbai.in" class="text-sm text-body no-underline hover:text-link">
+                  aaai@tcetmumbai.in
+                </a>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-hairline-soft">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-ink">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-sm font-semibold text-ink">Location</h3>
+                <p class="text-sm text-body">
+                  Thakur College of Engineering & Technology<br />
+                  Thakur Village, Kandivali East<br />
+                  Mumbai, Maharashtra 400101
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-hairline-soft">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-ink">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <circle cx="12" cy="12" r="5"></circle>
+                  <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"></circle>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-sm font-semibold text-ink">Social Media</h3>
+                <div class="mt-1 flex gap-3">
+                  <a
+                    href="https://www.instagram.com/aaai.tcet/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn-ghost"
+                  >
+                    Instagram
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/company/tcet-aaai"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn-ghost"
+                  >
+                    LinkedIn
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div>
+          <p class="mono-eyebrow mb-2">Send a Message</p>
+          <h2 class="mb-6 font-semibold text-ink" style="font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.25; letter-spacing: -0.04em;">
+            Contact Form
+          </h2>
+
+          <form class="flex flex-col gap-4" action="mailto:aaai@tcetmumbai.in" method="post" enctype="text/plain">
+            <div>
+              <label for="name" class="mb-1 block text-sm font-medium text-ink">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                class="text-input"
+                placeholder="Your name"
+              />
+            </div>
+            <div>
+              <label for="email" class="mb-1 block text-sm font-medium text-ink">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="text-input"
+                placeholder="you@example.com"
+              />
+            </div>
+            <div>
+              <label for="subject" class="mb-1 block text-sm font-medium text-ink">Subject</label>
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                class="text-input"
+                placeholder="What's this about?"
+              />
+            </div>
+            <div>
+              <label for="message" class="mb-1 block text-sm font-medium text-ink">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+                class="text-input resize-none"
+                placeholder="Your message..."
+              ></textarea>
+            </div>
+            <button type="submit" class="btn-primary mt-2 w-full">
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

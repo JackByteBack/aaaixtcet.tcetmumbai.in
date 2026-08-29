@@ -1,0 +1,128 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import EventCard from '../../components/EventCard.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const allEvents = await getCollection('events');
+const upcomingEvents = allEvents
+  .filter((e) => e.data.upcoming)
+  .sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
+
+const pastEvents = allEvents
+  .filter((e) => !e.data.upcoming)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<Layout
+  title="Events"
+  description="Upcoming and past events by TCET AAAI — workshops, hackathons, speaker sessions, and more."
+>
+  <script is:inline>
+    document.documentElement.classList.add('dark');
+    localStorage.setItem('theme', 'dark');
+  </script>
+  <Navbar hideThemeToggle dark />
+
+  <!-- Theme Video Background (all devices) -->
+  <div class="relative h-screen overflow-hidden">
+    <video
+      muted
+      loop
+      playsinline
+      preload="none"
+      data-lazy-video
+      class="absolute inset-0 w-full object-cover"
+      style="height: 100%;"
+    >
+      <source src="/videos/theme-bg.mp4" type="video/mp4" />
+    </video>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70"></div>
+    <div class="relative flex h-full flex-col items-center justify-center px-6 text-center">
+      <p class="mb-3 font-mono text-xs font-medium uppercase tracking-wider text-white/70">Upcoming Event</p>
+      <h1 class="mb-4 font-semibold text-white" style="font-size: clamp(1.75rem, 5vw, 3rem); line-height: 1.1; letter-spacing: -0.05em; max-width: 36rem;">
+        Murder Among Us
+      </h1>
+      <p class="text-sm text-white/80" style="line-height: 1.6; max-width: 32rem;">
+        An immersive murder mystery game — trust no one, question everyone, find the killer before you become the next victim.
+      </p>
+    </div>
+  </div>
+
+  <!-- Upcoming Events -->
+  {upcomingEvents.length > 0 && (
+    <section class="border-t border-[#2a2a2a] bg-[#0a0a0a]">
+      <div class="mx-auto max-w-[1200px] px-6 py-12 md:py-20 lg:py-24">
+        <p class="mb-2 font-mono text-xs font-medium uppercase tracking-wider text-[#707070]">Coming Up</p>
+        <h2 class="mb-8 font-semibold text-[#f0f0f0]" style="font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.25; letter-spacing: -0.04em;">
+          Upcoming Events
+        </h2>
+        <div class="grid gap-6 md:grid-cols-2">
+          {upcomingEvents.map((event) => (
+            <EventCard
+              title={event.data.title}
+              date={event.data.date.toISOString()}
+              time={event.data.time}
+              venue={event.data.venue}
+              description={event.data.description}
+              category={event.data.category}
+              href={`/events/${event.id}`}
+              registrationUrl={event.data.registrationUrl}
+              backgroundImage={event.id === 'intro-to-ml-workshop' ? '/images/among us ehe.jpg' : undefined}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Past Events -->
+  <section class="border-t border-[#2a2a2a] bg-[#0a0a0a]">
+    <div class="mx-auto max-w-[1200px] px-6 py-12 md:py-20 lg:py-24">
+      <p class="mb-2 font-mono text-xs font-medium uppercase tracking-wider text-[#707070]">Archive</p>
+      <h2 class="mb-8 font-semibold text-[#f0f0f0]" style="font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.25; letter-spacing: -0.04em;">
+        Past Events
+      </h2>
+      {pastEvents.length > 0 ? (
+        <div class="grid gap-6 md:grid-cols-3">
+          {pastEvents.map((event) => (
+            <EventCard
+              title={event.data.title}
+              date={event.data.date.toISOString()}
+              venue={event.data.venue}
+              description={event.data.description}
+              category={event.data.category}
+              href={`/events/${event.id}`}
+              backgroundImage={event.id === 'intro-to-ml-workshop' ? '/images/among us ehe.jpg' : undefined}
+            />
+          ))}
+        </div>
+      ) : (
+        <p class="text-[#b0b0b0]">No past events yet. Check back soon!</p>
+      )}
+    </div>
+  </section>
+
+  <Footer dark />
+</Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const lazyVideos = document.querySelectorAll('[data-lazy-video]');
+    if (lazyVideos.length === 0) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const video = entry.target as HTMLVideoElement;
+          video.preload = 'metadata';
+          video.play().catch(() => {});
+          observer.unobserve(video);
+        }
+      });
+    }, { rootMargin: '200px' });
+
+    lazyVideos.forEach((video) => observer.observe(video));
+  });
+</script>

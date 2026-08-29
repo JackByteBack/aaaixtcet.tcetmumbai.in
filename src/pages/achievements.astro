@@ -1,0 +1,110 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import CTABand from '../components/CTABand.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Achievements"
+  description="Notable achievements, milestones, and highlights from TCET AAAI."
+>
+  <Navbar />
+
+  <Hero
+    eyebrow="Achievements"
+    heading="Milestones & Highlights"
+    subheading="A look at what TCET AAAI has accomplished and the impact we've made."
+  />
+
+  <!-- Achievements Grid -->
+  <section class="border-t border-hairline bg-canvas">
+    <div class="mx-auto max-w-[1200px] px-6 py-12 md:py-20 lg:py-24">
+      <div class="grid gap-6 md:grid-cols-2">
+        <div class="feature-card">
+          <p class="mono-eyebrow mb-3">Recognition</p>
+          <h3 class="mb-2 text-sm font-semibold text-ink">Best Student Chapter Award</h3>
+          <p class="text-sm leading-6 text-body">
+            Recognized for outstanding contribution to AI education and community building among student chapters.
+          </p>
+        </div>
+        <div class="feature-card">
+          <p class="mono-eyebrow mb-3">Impact</p>
+          <h3 class="mb-2 text-sm font-semibold text-ink">200+ Active Members</h3>
+          <p class="text-sm leading-6 text-body">
+            Growing from a handful of enthusiasts to one of the largest student communities at TCET focused on AI and ML.
+          </p>
+        </div>
+        <div class="feature-card">
+          <p class="mono-eyebrow mb-3">Events</p>
+          <h3 class="mb-2 text-sm font-semibold text-ink">30+ Events Conducted</h3>
+          <p class="text-sm leading-6 text-body">
+            Workshops, hackathons, speaker sessions, and competitions that have reached hundreds of students.
+          </p>
+        </div>
+        <div class="feature-card">
+          <p class="mono-eyebrow mb-3">Speakers</p>
+          <h3 class="mb-2 text-sm font-semibold text-ink">Industry Expert Sessions</h3>
+          <p class="text-sm leading-6 text-body">
+            Hosted speakers from leading AI companies and research institutions, bringing real-world insights to campus.
+          </p>
+        </div>
+        <div class="feature-card">
+          <p class="mono-eyebrow mb-3">Projects</p>
+          <h3 class="mb-2 text-sm font-semibold text-ink">Student-Led AI Projects</h3>
+          <p class="text-sm leading-6 text-body">
+            Members have built and deployed AI solutions — from chatbots to computer vision systems — solving real campus problems.
+          </p>
+        </div>
+        <div class="feature-card">
+          <p class="mono-eyebrow mb-3">Network</p>
+          <h3 class="mb-2 text-sm font-semibold text-ink">AAAI Chapter Affiliation</h3>
+          <p class="text-sm leading-6 text-body">
+            Official recognition by the Association for the Advancement of Artificial Intelligence, connecting us to the global AI community.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="border-t border-hairline bg-canvas">
+    <div class="mx-auto max-w-[1200px] px-6 py-12 md:py-20 lg:py-24">
+      <p class="mono-eyebrow mb-2">Journey</p>
+      <h2 class="mb-8 font-semibold text-ink" style="font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.25; letter-spacing: -0.04em;">
+        Our Timeline
+      </h2>
+      <div class="relative border-l border-hairline pl-8 md:pl-10">
+        <div class="relative mb-12 last:mb-0">
+          <div class="absolute -left-[41px] flex h-4 w-4 items-center justify-center rounded-full border-2 border-ink bg-canvas md:-left-[49px]"></div>
+          <time class="mono-eyebrow">2023</time>
+          <h3 class="mt-1 text-sm font-semibold text-ink">Chapter Founded</h3>
+          <p class="mt-1 text-sm text-body">
+            TCET AAAI was established with a vision to make AI education accessible to all students at TCET.
+          </p>
+        </div>
+        <div class="relative mb-12 last:mb-0">
+          <div class="absolute -left-[41px] flex h-4 w-4 items-center justify-center rounded-full border-2 border-ink bg-canvas md:-left-[49px]"></div>
+          <time class="mono-eyebrow">2024</time>
+          <h3 class="mt-1 text-sm font-semibold text-ink">Growing Community</h3>
+          <p class="mt-1 text-sm text-body">
+            Reached 100+ members. Conducted first large-scale hackathon and partnered with industry for speaker sessions.
+          </p>
+        </div>
+        <div class="relative mb-12 last:mb-0">
+          <div class="absolute -left-[41px] flex h-4 w-4 items-center justify-center rounded-full border-2 border-ink bg-canvas md:-left-[49px]"></div>
+          <time class="mono-eyebrow">2025</time>
+          <h3 class="mt-1 text-sm font-semibold text-ink">Major Milestones</h3>
+          <p class="mt-1 text-sm text-body">
+            200+ active members. Official AAAI chapter recognition. Multiple successful events and growing industry partnerships.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTABand />
+
+  <Footer />
+</Layout>
