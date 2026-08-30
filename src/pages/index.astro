@@ -4,7 +4,6 @@ import Navbar from '../components/Navbar.astro';
 import Hero from '../components/Hero.astro';
 import StatCounter from '../components/StatCounter.astro';
 import EventCard from '../components/EventCard.astro';
-import LoadingScreen from '../components/LoadingScreen.astro';
 import Footer from '../components/Footer.astro';
 import { getCollection } from 'astro:content';
 
@@ -24,7 +23,6 @@ const pastEvents = allEvents
   title="TCET AAAI"
   description="TCET AAAI is the official student chapter of the Association for the Advancement of Artificial Intelligence (AAAI) at Thakur College of Engineering & Technology, Mumbai. Join 200+ students learning AI, machine learning, deep learning, NLP, and more through workshops, hackathons, and speaker sessions."
 >
-  <LoadingScreen />
   <Navbar />
 
   <Hero
