@@ -10,6 +10,6 @@ workingCommunity:
   - "Chapter Development"
   - "Member Engagement"
 order: 2
-linkedin: "https://www.linkedin.com/in/astha-sahu/"
-github: "https://github.com/astha-sahu"
+linkedin: "https://www.linkedin.com/login"
+github: "https://github.com/login"
 ---

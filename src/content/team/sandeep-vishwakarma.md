@@ -10,5 +10,5 @@ workingCommunity:
   - "Chapter Oversight"
   - "Student Mentorship"
 order: 0
-linkedin: "https://www.linkedin.com/in/sandeep-vishwakarma/"
+linkedin: "https://www.linkedin.com/login"
 ---

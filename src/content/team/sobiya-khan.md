@@ -10,6 +10,6 @@ workingCommunity:
   - "Logistics Management"
   - "Volunteer Coordination"
 order: 5
-linkedin: "https://www.linkedin.com/in/sobiya-khan/"
-github: "https://github.com/sobiya-khan"
+linkedin: "https://www.linkedin.com/login"
+github: "https://github.com/login"
 ---

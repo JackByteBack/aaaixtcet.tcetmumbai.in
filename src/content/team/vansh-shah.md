@@ -10,6 +10,6 @@ workingCommunity:
   - "Outreach"
   - "Brand Communication"
 order: 7
-linkedin: "https://www.linkedin.com/in/vansh-shah/"
-github: "https://github.com/vansh-shah"
+linkedin: "https://www.linkedin.com/login"
+github: "https://github.com/login"
 ---

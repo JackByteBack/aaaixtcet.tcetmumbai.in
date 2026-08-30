@@ -10,5 +10,5 @@ workingCommunity:
   - "Academic Coordination"
   - "Mentorship"
 order: 0
-linkedin: "https://www.linkedin.com/in/aruta-jayswal/"
+linkedin: "https://www.linkedin.com/login"
 ---

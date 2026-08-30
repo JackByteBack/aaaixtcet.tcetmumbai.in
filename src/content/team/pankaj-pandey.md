@@ -10,6 +10,6 @@ workingCommunity:
   - "Industry Relations"
   - "Partnership Development"
 order: 8
-linkedin: "https://www.linkedin.com/in/pankaj-pandey/"
-github: "https://github.com/pankaj-pandey"
+linkedin: "https://www.linkedin.com/login"
+github: "https://github.com/login"
 ---

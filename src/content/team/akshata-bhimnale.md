@@ -10,5 +10,5 @@ workingCommunity:
   - "Technical Guidance"
   - "Student Development"
 order: 0
-linkedin: "https://www.linkedin.com/in/akshata-bhimnale/"
+linkedin: "https://www.linkedin.com/login"
 ---

@@ -10,6 +10,6 @@ workingCommunity:
   - "Brand Identity"
   - "Creative Campaigns"
 order: 6
-linkedin: "https://www.linkedin.com/in/vidya-suthar/"
-github: "https://github.com/vidya-suthar"
+linkedin: "https://www.linkedin.com/login"
+github: "https://github.com/login"
 ---
