@@ -66,16 +66,15 @@ const currentPath = Astro.url.pathname;
 
     <!-- Mobile menu -->
     <div id="mobile-menu" class:list={[
-      "grid border-t md:hidden",
+      "absolute left-0 right-0 top-full border-t z-50 md:hidden",
       dark ? "border-[#2a2a2a] bg-black" : "border-hairline bg-canvas dark:border-hairline dark:bg-canvas"
-    ]} style="grid-template-rows: 0fr; transition: grid-template-rows 0.3s ease, opacity 0.3s ease; opacity: 0;">
-      <div class="min-h-0 overflow-hidden">
-        <div class="flex flex-col gap-1 py-2">
+    ]} style="opacity: 0; pointer-events: none; transition: opacity 0.3s ease;">
+      <div class="flex flex-col">
         {navLinks.map((link) => (
           <a
             href={link.href}
             class:list={[
-              'rounded-md px-3 py-2 text-sm no-underline transition-colors',
+              'px-4 py-2.5 text-sm no-underline transition-colors',
               currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href))
                 ? dark ? 'bg-[#1a1a1a] text-white font-medium' : 'bg-hairline-soft dark:bg-hairline-soft text-ink font-medium'
                 : dark ? 'text-gray-400 hover:bg-[#1a1a1a] hover:text-white' : 'text-body hover:bg-hairline-soft dark:hover:bg-hairline-soft hover:text-ink',
@@ -84,7 +83,6 @@ const currentPath = Astro.url.pathname;
             {link.label}
           </a>
         ))}
-        </div>
       </div>
     </div>
   </div>
@@ -101,8 +99,8 @@ const currentPath = Astro.url.pathname;
 
   function closeMenu() {
     isOpen = false;
-    menu?.style.setProperty('grid-template-rows', '0fr');
     menu?.style.setProperty('opacity', '0');
+    menu?.style.setProperty('pointer-events', 'none');
     lineTop?.setAttribute('d', 'M2 4h12');
     lineMid?.setAttribute('d', 'M2 8h12');
     lineBot?.setAttribute('d', 'M2 12h12');
@@ -111,8 +109,8 @@ const currentPath = Astro.url.pathname;
 
   function openMenu() {
     isOpen = true;
-    menu?.style.setProperty('grid-template-rows', '1fr');
     menu?.style.setProperty('opacity', '1');
+    menu?.style.setProperty('pointer-events', 'auto');
     lineTop?.setAttribute('d', 'M4 4L12 12');
     lineMid?.setAttribute('d', 'M8 8L8 8');
     lineBot?.setAttribute('d', 'M4 12L12 4');
