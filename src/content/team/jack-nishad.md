@@ -10,6 +10,6 @@ workingCommunity:
   - "Project Development"
   - "Technical Content & Tutorials"
 order: 9
-linkedin: "https://www.linkedin.com/in/jack-nishad/"
-github: "https://github.com/jack-nishad"
+linkedin: "https://www.linkedin.com/in/jackbyteback/"
+github: "https://github.com/JackByteBack"
 ---

@@ -87,10 +87,10 @@ function getIcon(role: string): string {
         <span class="scroll-animate mb-5 inline-block rounded-full bg-ink px-4 py-1.5 text-[0.65rem] font-extrabold uppercase tracking-widest text-on-primary">
           {tier.label}
         </span>
-        <div class="tier-box scroll-animate rounded-3xl border-2 border-ink p-8 md:p-12">
+        <div class="tier-box rounded-3xl border-2 border-ink p-8 md:p-12">
           <div class="grid grid-cols-1 gap-12 sm:grid-cols-2 sm:gap-x-10 sm:gap-y-16">
             {tier.members.map((member, mi) => (
-              <div class="scroll-animate" style={`transition-delay: ${mi * 100}ms;`}>
+              <div class="scroll-animate" style={`transition-delay: ${mi * 60}ms;`}>
               <div class="card-hover flex flex-col">
                 <!-- Name -->
                 <h3 class="mb-2 text-base font-black uppercase tracking-wide text-ink sm:text-lg">{member.data.name}</h3>
