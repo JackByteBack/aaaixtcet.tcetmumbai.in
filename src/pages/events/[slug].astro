@@ -189,7 +189,7 @@ const gradient = event.data.heroGradient || `linear-gradient(135deg, ${accent}, 
                 )}
               </div>
 
-              {event.data.registrationUrl && (
+              {event.data.registrationUrl ? (
                 <a
                   href={event.data.registrationUrl}
                   target="_blank"
@@ -199,7 +199,11 @@ const gradient = event.data.heroGradient || `linear-gradient(135deg, ${accent}, 
                 >
                   Register Now
                 </a>
-              )}
+              ) : event.data.registrationMessage ? (
+                <p class="mt-5 block w-full rounded-full py-2.5 text-center text-sm font-medium text-[#b0b0b0] border border-[#2a2a2a] bg-[#141414]">
+                  {event.data.registrationMessage}
+                </p>
+              ) : null}
 
               {!event.data.upcoming && (
                 <p class="mt-3 text-xs text-[#707070] text-center">This event has concluded</p>

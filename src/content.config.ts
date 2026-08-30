@@ -12,6 +12,7 @@ const events = defineCollection({
     venue: z.string().optional(),
     upcoming: z.boolean().default(false),
     registrationUrl: z.string().url().optional(),
+    registrationMessage: z.string().optional(),
     category: z.string().optional(),
     coverImage: z.string().optional(),
     accentColor: z.string().default('#0070f3'),

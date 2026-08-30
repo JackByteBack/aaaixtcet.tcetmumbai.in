@@ -5,7 +5,7 @@ date: 2026-10-05
 time: "10:00 AM - 10:00 AM (Next Day)"
 venue: "Lab Complex, TCET"
 upcoming: true
-registrationUrl: "https://forms.google.com/example"
+registrationMessage: "Currently, the registration link is not available. Stay tuned!"
 category: "Hackathon"
 accentColor: "#0070f3"
 heroGradient: "linear-gradient(135deg, #0070f3, #7928ca)"
