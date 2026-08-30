@@ -4,50 +4,50 @@ import Navbar from '../components/Navbar.astro';
 import Hero from '../components/Hero.astro';
 import CTABand from '../components/CTABand.astro';
 import Footer from '../components/Footer.astro';
-import FAQ from '../components/FAQ.astro';
 ---
 
 <Layout
   title="About"
-  description="Learn about TCET AAAI — the official AI student chapter at Thakur College of Engineering & Technology, affiliated with AAAI. We are a community of 200+ students passionate about artificial intelligence, machine learning, and the future of technology."
+  description="Learn about TCET AAAI — the official BCA department AI student chapter at Thakur College of Engineering & Technology, affiliated with AAAI. We are a community of 200+ BCA students passionate about artificial intelligence, machine learning, and the future of technology."
 >
   <Navbar />
 
   <Hero
     eyebrow="About Us"
     heading="What is TCET AAAI?"
-    subheading="TCET AAAI is the official student chapter of the Association for the Advancement of Artificial Intelligence (AAAI) at Thakur College of Engineering & Technology, Mumbai."
+    subheading="TCET AAAI is the official BCA department student chapter of the Association for the Advancement of Artificial Intelligence (AAAI) at Thakur College of Engineering & Technology, Mumbai."
   />
 
-  <!-- Mission -->
+  <!-- Mission & Affiliation -->
   <section class="border-t border-hairline bg-canvas">
     <div class="mx-auto max-w-[1200px] px-6 py-12 md:py-20 lg:py-24">
       <div class="grid gap-8 md:grid-cols-2 md:gap-12">
-        <div>
+        <div class="scroll-animate-left">
           <p class="mono-eyebrow mb-2">Our Mission</p>
           <h2 class="mb-4 font-semibold text-ink" style="font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.25; letter-spacing: -0.04em;">
             Democratizing AI Education
           </h2>
           <p class="mb-4 text-body">
-            We believe artificial intelligence should be accessible to every student, not just those in
-            CS programs. Our chapter bridges the gap between theory and practice, making AI approachable
-            for all disciplines.
+            We believe artificial intelligence should be accessible to every BCA student, not just those in
+            specialized CS programs. Our chapter bridges the gap between theory and practice, making AI approachable
+            for all backgrounds.
           </p>
           <p class="text-body">
             Through workshops, hands-on projects, speaker sessions, and competitions, we create an
-            environment where students can explore, experiment, and excel in AI — regardless of their
-            background or experience level.
+            environment where BCA students can explore, experiment, and excel in AI — regardless of their
+            experience level.
           </p>
         </div>
-        <div>
+        <div class="scroll-animate-right">
           <p class="mono-eyebrow mb-2">Affiliation</p>
           <h2 class="mb-4 font-semibold text-ink" style="font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.25; letter-spacing: -0.04em;">
             Part of a Global Network
           </h2>
           <p class="mb-4 text-body">
-            TCET AAAI is a recognized student chapter of the Association for the Advancement of
+            TCET AAAI is the official BCA department student chapter of the Association for the Advancement of
             Artificial Intelligence (AAAI) — the world's leading professional society for AI research
-            and education.
+            and education. Operating under the Department of Computer Applications at TCET, we serve
+            as the primary AI community for BCA students.
           </p>
           <p class="text-body">
             This affiliation connects our members to a global community of AI researchers, practitioners,
@@ -59,53 +59,103 @@ import FAQ from '../components/FAQ.astro';
     </div>
   </section>
 
-  <!-- Faculty Coordinators -->
+  <!-- Stats -->
+  <section class="border-y border-hairline bg-canvas">
+    <div class="mx-auto grid max-w-[1200px] grid-cols-2 gap-6 px-6 py-8 md:grid-cols-4 md:gap-8 md:py-16">
+      <div class="text-center">
+        <p class="text-3xl font-semibold text-ink md:text-4xl">200+</p>
+        <p class="mt-1 text-sm text-mute">Active Members</p>
+      </div>
+      <div class="text-center">
+        <p class="text-3xl font-semibold text-ink md:text-4xl">30+</p>
+        <p class="mt-1 text-sm text-mute">Events Held</p>
+      </div>
+      <div class="text-center">
+        <p class="text-3xl font-semibold text-ink md:text-4xl">2023</p>
+        <p class="mt-1 text-sm text-mute">Founded</p>
+      </div>
+      <div class="text-center">
+        <p class="text-3xl font-semibold text-ink md:text-4xl">15+</p>
+        <p class="mt-1 text-sm text-mute">Workshops</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- What We Do -->
   <section class="border-t border-hairline bg-canvas">
     <div class="mx-auto max-w-[1200px] px-6 py-12 md:py-20 lg:py-24">
-      <p class="mono-eyebrow mb-2">Guidance</p>
-      <h2 class="mb-8 font-semibold text-ink" style="font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.25; letter-spacing: -0.04em;">
-        Faculty Coordinators
-      </h2>
-      <div class="grid gap-6 md:grid-cols-2">
-        <div class="feature-card">
-          <div class="flex items-center gap-4">
-            <div class="flex h-14 w-14 items-center justify-center rounded-full bg-hairline-soft">
-              <span class="text-lg font-semibold text-mute">F</span>
-            </div>
-            <div>
-              <h3 class="text-sm font-semibold text-ink">Faculty Coordinator</h3>
-              <p class="text-xs text-mute">Thakur College of Engineering & Technology</p>
-            </div>
+      <div class="scroll-animate">
+        <p class="mono-eyebrow mb-2">What We Do</p>
+        <h2 class="mb-8 font-semibold text-ink" style="font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.25; letter-spacing: -0.04em;">
+          Building the AI Community at TCET
+        </h2>
+      </div>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div class="feature-card scroll-animate-left delay-100">
+          <div class="mb-3 flex h-10 w-10 items-center justify-center rounded-md bg-hairline-soft">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-ink">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+              <path d="M2 17l10 5 10-5"></path>
+              <path d="M2 12l10 5 10-5"></path>
+            </svg>
           </div>
-          <p class="mt-4 text-sm leading-6 text-body">
-            Guiding the chapter's vision, organizing events, and mentoring students in their AI journey.
+          <h3 class="mb-2 text-sm font-semibold text-ink">Workshops & Training</h3>
+          <p class="text-sm leading-6 text-body">
+            Hands-on workshops on ML, deep learning, NLP, computer vision, and generative AI for BCA students.
           </p>
         </div>
-        <div class="feature-card">
-          <div class="flex items-center gap-4">
-            <div class="flex h-14 w-14 items-center justify-center rounded-full bg-hairline-soft">
-              <span class="text-lg font-semibold text-mute">F</span>
-            </div>
-            <div>
-              <h3 class="text-sm font-semibold text-ink">Co-Coordinator</h3>
-              <p class="text-xs text-mute">Thakur College of Engineering & Technology</p>
-            </div>
+        <div class="feature-card scroll-animate delay-200">
+          <div class="mb-3 flex h-10 w-10 items-center justify-center rounded-md bg-hairline-soft">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-ink">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
           </div>
-          <p class="mt-4 text-sm leading-6 text-body">
-            Supporting chapter operations, coordinating with industry partners, and overseeing student projects.
+          <h3 class="mb-2 text-sm font-semibold text-ink">Speaker Sessions</h3>
+          <p class="text-sm leading-6 text-body">
+            Industry experts share insights on cutting-edge AI topics and career paths for BCA students.
+          </p>
+        </div>
+        <div class="feature-card scroll-animate delay-300">
+          <div class="mb-3 flex h-10 w-10 items-center justify-center rounded-md bg-hairline-soft">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-ink">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+          </div>
+          <h3 class="mb-2 text-sm font-semibold text-ink">Hackathons</h3>
+          <p class="text-sm leading-6 text-body">
+            Compete, collaborate, and build innovative AI solutions in team-based hackathons.
+          </p>
+        </div>
+        <div class="feature-card scroll-animate-right delay-400">
+          <div class="mb-3 flex h-10 w-10 items-center justify-center rounded-md bg-hairline-soft">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-ink">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <h3 class="mb-2 text-sm font-semibold text-ink">Community</h3>
+          <p class="text-sm leading-6 text-body">
+            Peer learning, study groups, and project collaborations in a supportive ecosystem.
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- What We Cover -->
+  <!-- Focus Areas -->
   <section class="border-t border-hairline bg-canvas">
     <div class="mx-auto max-w-[1200px] px-6 py-12 md:py-20 lg:py-24">
-      <p class="mono-eyebrow mb-2">Focus Areas</p>
-      <h2 class="mb-8 font-semibold text-ink" style="font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.25; letter-spacing: -0.04em;">
-        What We Explore
-      </h2>
+      <div class="scroll-animate">
+        <p class="mono-eyebrow mb-2">Focus Areas</p>
+        <h2 class="mb-8 font-semibold text-ink" style="font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.25; letter-spacing: -0.04em;">
+          What We Explore
+        </h2>
+      </div>
       <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {[
           { title: 'Machine Learning', desc: 'Supervised, unsupervised, and reinforcement learning techniques.' },
@@ -116,8 +166,8 @@ import FAQ from '../components/FAQ.astro';
           { title: 'AI Ethics', desc: 'Responsible AI, fairness, transparency, and societal impact.' },
           { title: 'Data Science', desc: 'Data analysis, visualization, and statistical modeling.' },
           { title: 'Robotics', desc: 'Autonomous systems, perception, and robotic learning.' },
-        ].map((topic) => (
-          <div class="feature-card">
+        ].map((topic, i) => (
+          <div class={`feature-card scroll-animate delay-${(i % 4 + 1) * 100}`}>
             <h3 class="mb-1 text-sm font-semibold text-ink">{topic.title}</h3>
             <p class="text-xs leading-5 text-body">{topic.desc}</p>
           </div>
@@ -126,78 +176,51 @@ import FAQ from '../components/FAQ.astro';
     </div>
   </section>
 
-  <!-- SEO Content: About TCET AAAI -->
+  <!-- Faculty Coordinators -->
   <section class="border-t border-hairline bg-canvas">
-    <div class="mx-auto max-w-[800px] px-6 py-12 md:py-20">
-      <div class="prose max-w-none">
-        <h2>TCET AAAI — Advancing Artificial Intelligence at Thakur College</h2>
-
-        <p>
-          TCET AAAI is the official student chapter of the Association for the Advancement of Artificial Intelligence (AAAI) at Thakur College of Engineering & Technology (TCET), located in Kandivali East, Mumbai. Founded in 2023, the chapter has rapidly grown into one of the most active student-led AI communities in the city, bringing together over 200 members who share a passion for artificial intelligence, machine learning, and emerging technologies.
-        </p>
-
-        <h3>The Vision Behind TCET AAAI</h3>
-        <p>
-          The chapter was established with a clear mission: to democratize artificial intelligence education at the college level. While AI has become one of the most transformative technologies of our time, access to quality AI education has traditionally been limited to specialized programs and expensive courses. TCET AAAI breaks down these barriers by creating a welcoming, inclusive environment where students from all branches of engineering — not just computer science — can learn, experiment, and build with AI.
-        </p>
-        <p>
-          From day one, the chapter has operated on the belief that AI literacy is not a luxury but a necessity. Whether a student is studying electronics, mechanical engineering, or information technology, understanding the fundamentals of machine learning and AI is essential for their career in the modern workforce. This philosophy drives every workshop, hackathon, and event the chapter organizes.
-        </p>
-
-        <h3>What We Do</h3>
-        <p>
-          TCET AAAI operates across four core activity pillars that define the chapter's impact on campus:
-        </p>
-        <p>
-          <strong>Workshops and Training Sessions</strong> form the backbone of the chapter's educational outreach. The team regularly conducts hands-on workshops covering topics such as introductory machine learning with Python, deep learning with PyTorch and TensorFlow, natural language processing, computer vision, and generative AI. These sessions are designed to be accessible to beginners while still providing depth for more experienced students. Each workshop includes practical coding exercises, real-world datasets, and take-home projects that help participants build a portfolio of AI work.
-        </p>
-        <p>
-          <strong>Speaker Sessions and Industry Connects</strong> bring real-world AI expertise to campus. The chapter has hosted professionals from leading technology companies and research institutions who share insights on how AI is being applied in industry, the skills that matter most in the job market, and the ethical considerations that come with building intelligent systems. These sessions help students understand the bridge between academic learning and professional practice.
-        </p>
-        <p>
-          <strong>Hackathons and Competitions</strong> challenge students to apply what they have learned under time pressure and in collaborative team settings. TCET AAAI has organized multiple hackathons where teams of students build working AI prototypes — from chatbots and recommendation engines to computer vision applications — in compressed timeframes. These events develop not only technical skills but also teamwork, problem-solving, and the ability to present complex ideas clearly.
-        </p>
-        <p>
-          <strong>Community Building and Peer Learning</strong> is perhaps the most important aspect of the chapter. Regular meetups, study groups, and project collaborations create a supportive ecosystem where students help each other grow. Senior members mentor newcomers, project teams form organically around shared interests, and the collective knowledge of the community grows with every interaction.
-        </p>
-
-        <h3>Our Focus Areas</h3>
-        <p>
-          The chapter explores a wide range of AI disciplines to ensure comprehensive coverage of the field. Core focus areas include machine learning (supervised, unsupervised, and reinforcement learning), deep learning (neural network architectures including CNNs, RNNs, and Transformers), natural language processing (text analysis, language models, and conversational AI), computer vision (image recognition, object detection, and visual AI systems), generative AI (large language models, diffusion models, and creative AI applications), data science (analysis, visualization, and statistical modeling), AI ethics (responsible AI development, fairness, and transparency), and robotics (autonomous systems and perception).
-        </p>
-        <p>
-          This breadth ensures that every member can find a specialization that aligns with their interests and career goals, while also gaining exposure to the full spectrum of AI applications.
-        </p>
-
-        <h3>Achievements and Milestones</h3>
-        <p>
-          Since its founding, TCET AAAI has achieved several significant milestones. The chapter was recognized with the Best Student Chapter Award for its outstanding contribution to AI education and community building. Within two years of its establishment, the community grew from a small group of founding members to over 200 active participants, making it one of the largest student organizations at TCET focused on technology and innovation.
-        </p>
-        <p>
-          The chapter has conducted over 30 events, including workshops, hackathons, and speaker sessions, reaching hundreds of students across the college. Members have built and deployed real AI solutions — from campus navigation chatbots to attendance tracking systems using computer vision — demonstrating that student-led projects can have genuine impact.
-        </p>
-
-        <h3>AAAI Affiliation and Global Network</h3>
-        <p>
-          TCET AAAI's official affiliation with the Association for the Advancement of Artificial Intelligence connects the chapter to the world's leading professional society for AI research and education. This affiliation provides members with access to AAAI publications, conference proceedings, and a global network of AI researchers, practitioners, and students. It also positions TCET AAAI as a recognized entity within the international AI education ecosystem, opening doors for collaboration, visibility, and knowledge exchange.
-        </p>
-
-        <h3>Join TCET AAAI</h3>
-        <p>
-          TCET AAAI welcomes students from all branches and years at Thakur College of Engineering & Technology. No prior experience in AI or programming is required — only curiosity and a willingness to learn. The chapter provides all the resources, mentorship, and community support needed to begin or accelerate a journey in artificial intelligence. Whether you are a complete beginner or an experienced practitioner looking for a community of like-minded peers, TCET AAAI has a place for you.
-        </p>
-        <p>
-          To learn more about upcoming events, membership, or collaboration opportunities, visit our <a href="/events">events page</a> or <a href="/contact">get in touch</a> with the team.
-        </p>
+    <div class="mx-auto max-w-[1200px] px-6 py-12 md:py-20 lg:py-24">
+      <div class="scroll-animate">
+        <p class="mono-eyebrow mb-2">Guidance</p>
+        <h2 class="mb-8 font-semibold text-ink" style="font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.25; letter-spacing: -0.04em;">
+          Faculty Coordinators
+        </h2>
+      </div>
+      <div class="grid gap-6 md:grid-cols-2">
+        <div class="feature-card scroll-animate-left delay-100">
+          <div class="flex items-center gap-4">
+            <div class="flex h-14 w-14 items-center justify-center rounded-full bg-hairline-soft">
+              <span class="text-lg font-semibold text-mute">F</span>
+            </div>
+            <div>
+              <h3 class="text-sm font-semibold text-ink">Faculty Coordinator</h3>
+              <p class="text-xs text-mute">Department of Computer Applications, TCET</p>
+            </div>
+          </div>
+          <p class="mt-4 text-sm leading-6 text-body">
+            Guiding the chapter's vision, organizing events, and mentoring BCA students in their AI journey.
+          </p>
+        </div>
+        <div class="feature-card scroll-animate-right delay-200">
+          <div class="flex items-center gap-4">
+            <div class="flex h-14 w-14 items-center justify-center rounded-full bg-hairline-soft">
+              <span class="text-lg font-semibold text-mute">F</span>
+            </div>
+            <div>
+              <h3 class="text-sm font-semibold text-ink">Co-Coordinator</h3>
+              <p class="text-xs text-mute">Department of Computer Applications, TCET</p>
+            </div>
+          </div>
+          <p class="mt-4 text-sm leading-6 text-body">
+            Supporting chapter operations, coordinating with industry partners, and overseeing BCA student projects.
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
-  <FAQ />
-
   <CTABand
     heading="Want to be part of TCET AAAI?"
-    subheading="Join our community of AI enthusiasts. No prior experience needed — just curiosity."
+    subheading="Join our community of BCA students passionate about AI. No prior experience needed — just curiosity."
     ctaLabel="Contact Us"
     ctaHref="/contact"
   />

@@ -1,0 +1,227 @@
+---
+interface Member {
+  id: string;
+  data: {
+    name: string;
+    role: string;
+    group: 'faculty' | 'core';
+    weight: 'solid' | 'pale' | 'neutral';
+    quote?: string;
+    photo?: string;
+    linkedin?: string;
+    github?: string;
+  };
+}
+
+interface Props {
+  members: Member[];
+}
+
+const { members } = Astro.props;
+
+const tiers = [
+  { key: 'faculty' as const, label: 'FACULTY MENTORS & LEADERS' },
+  { key: 'core' as const, label: 'CORE EXECUTIVE TEAM' },
+];
+
+const tieredMembers = tiers.map(t => ({
+  ...t,
+  members: members.filter(m => m.data.group === t.key).sort((a, b) => a.data.order - b.data.order),
+}));
+
+const roleIcons: Record<string, string> = {
+  'Faculty Sponsor': '<path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>',
+  'Assistant Professor': '<rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>',
+  'Chairperson': '<path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>',
+  'Vice Chairperson': '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><line x1="18" y1="8" x2="23" y2="13"/><line x1="23" y1="8" x2="18" y2="13"/>',
+  'Secretary': '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>',
+  'Treasurer': '<line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>',
+  'Event Manager': '<rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>',
+  'Creative Head': '<circle cx="13.5" cy="6.5" r="2.5"/><path d="M17.5 10.5c0 0-1-1.5-4-1.5s-4 1.5-4 1.5"/><path d="M3 17.5c0 0 2-4 10.5-4s10.5 4 10.5 4"/><circle cx="6" cy="15" r="1.5"/>',
+  'PR Head': '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',
+  'Sponsorship Head': '<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>',
+  'Technical Head': '<polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>',
+  'Webmaster': '<circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>',
+};
+
+function getIcon(role: string): string {
+  return roleIcons[role] || '<circle cx="12" cy="12" r="10"/>';
+}
+---
+
+<!-- Page Header -->
+<section class="bg-canvas">
+  <div class="mx-auto max-w-[1200px] px-6 pt-16 pb-10 text-center md:pt-24 md:pb-14">
+    <span class="hero-animate mb-4 inline-block rounded-full bg-link px-4 py-1.5 text-xs font-extrabold uppercase tracking-widest text-ink" style="opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out;">
+      THE ENGINE ROOM
+    </span>
+    <h1 class="hero-animate mb-5 text-ink" style="font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.1; opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out 0.1s, transform 0.6s ease-out 0.1s;">
+      Meet the Team
+    </h1>
+    <p class="hero-animate mx-auto max-w-[520px] text-body" style="font-size: 1rem; line-height: 1.6; opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out 0.2s, transform 0.6s ease-out 0.2s;">
+      The execution team — turning ideas into code, events into impact, and AI into opportunity.
+    </p>
+  </div>
+</section>
+
+<!-- Hero Photo Card -->
+<section class="bg-canvas">
+  <div class="px-4 pb-12 sm:px-6 md:pb-16 lg:px-8">
+    <div class="team-hero-frame scroll-animate relative mx-auto max-w-[1400px] overflow-hidden rounded-2xl border-2 border-ink sm:rounded-3xl sm:border-[3px]">
+      <div class="aspect-[4/3] sm:aspect-[16/9] bg-ink/5 flex items-center justify-center">
+        <span class="text-2xl font-bold text-muted sm:text-3xl md:text-5xl">TCET AAAI</span>
+      </div>
+      <div class="absolute bottom-4 left-4 flex flex-col gap-1.5 sm:bottom-6 sm:left-6">
+        <span class="inline-block w-fit rounded-full bg-link px-3 py-1 text-xs font-bold text-ink sm:px-4 sm:text-sm">2026-27</span>
+        <span class="text-base font-bold text-white drop-shadow-md sm:text-xl md:text-2xl">TCET AAAI CORE</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tiered Sections -->
+{tieredMembers.map((tier, ti) => (
+  tier.members.length > 0 && (
+    <section class="border-t border-hairline bg-canvas">
+      <div class="mx-auto max-w-[1200px] px-6 py-12 md:py-16">
+        <span class="scroll-animate mb-5 inline-block rounded-full bg-ink px-4 py-1.5 text-[0.65rem] font-extrabold uppercase tracking-widest text-on-primary">
+          {tier.label}
+        </span>
+        <div class="tier-box scroll-animate rounded-3xl border-2 border-ink p-8 md:p-12">
+          <div class="grid grid-cols-1 gap-12 sm:grid-cols-2 sm:gap-x-10 sm:gap-y-16">
+            {tier.members.map((member, mi) => (
+              <div class="scroll-animate" style={`transition-delay: ${mi * 100}ms;`}>
+              <div class="card-hover flex flex-col">
+                <!-- Name -->
+                <h3 class="mb-2 text-base font-black uppercase tracking-wide text-ink sm:text-lg">{member.data.name}</h3>
+
+                <!-- Role Badge -->
+                <div class={`mb-4 inline-flex w-fit items-center gap-1.5 rounded-full px-3 py-1 text-[0.65rem] font-bold uppercase tracking-wider ${
+                  member.data.weight === 'solid'
+                    ? 'bg-link text-ink border-2 border-link'
+                    : member.data.weight === 'pale'
+                    ? 'bg-link/5 text-ink border-2 border-link'
+                    : 'bg-canvas-elevated text-ink border-2 border-ink'
+                }`}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={getIcon(member.data.role)} />
+                  <span>{member.data.role.toUpperCase()}</span>
+                </div>
+
+                <!-- Photo Frame -->
+                <div class={`mb-4 overflow-hidden rounded-2xl border-[10px] sm:border-[12px] ${
+                  member.data.weight === 'solid'
+                    ? 'border-link'
+                    : member.data.weight === 'pale'
+                    ? 'border-link/30'
+                    : 'border-ink'
+                }`} style="aspect-ratio: 3/4;">
+                  {member.data.photo ? (
+                    <img src={member.data.photo} alt={member.data.name} class="frame-img h-full w-full object-cover" loading="lazy" />
+                  ) : (
+                    <div class="flex h-full w-full items-center justify-center bg-hairline-soft">
+                      <span class="text-4xl font-black text-muted">{member.data.name.split(' ').map(n => n[0]).join('')}</span>
+                    </div>
+                  )}
+                </div>
+
+                <!-- Quote Bar -->
+                <div class={`mb-4 flex min-h-[3.5rem] overflow-hidden rounded-xl ${
+                  member.data.weight === 'solid'
+                    ? 'bg-link'
+                    : member.data.weight === 'pale'
+                    ? 'bg-link/5'
+                    : 'bg-canvas-elevated'
+                }`}>
+                  <div class={`w-1.5 shrink-0 ${
+                    member.data.weight === 'neutral' ? 'bg-ink' : 'bg-ink'
+                  }`}></div>
+                  <p class="p-2.5 text-[0.78rem] font-semibold not-italic text-ink" style="line-height: 1.5;">
+                    "{member.data.quote || member.data.role}"
+                  </p>
+                </div>
+
+                <!-- Social Icons -->
+                <div class="flex gap-2">
+                  {member.data.linkedin && (
+                    <a
+                      href={member.data.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class={`flex h-9 w-9 items-center justify-center rounded-lg border-2 border-ink text-ink no-underline transition-all hover:bg-ink hover:text-on-primary ${
+                        member.data.weight === 'solid'
+                          ? 'bg-link'
+                          : member.data.weight === 'pale'
+                          ? 'bg-link/5'
+                          : 'bg-canvas-elevated'
+                      }`}
+                      aria-label={`${member.data.name} LinkedIn`}
+                    >
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect x="2" y="9" width="4" height="12"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                      </svg>
+                    </a>
+                  )}
+                  {member.data.github && (
+                    <a
+                      href={member.data.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class={`flex h-9 w-9 items-center justify-center rounded-lg border-2 border-ink text-ink no-underline transition-all hover:bg-ink hover:text-on-primary ${
+                        member.data.weight === 'solid'
+                          ? 'bg-link'
+                          : member.data.weight === 'pale'
+                          ? 'bg-link/5'
+                          : 'bg-canvas-elevated'
+                      }`}
+                      aria-label={`${member.data.name} GitHub`}
+                    >
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                      </svg>
+                    </a>
+                  )}
+                </div>
+              </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+))}
+
+<style>
+  .tier-box {
+    background-color: var(--color-hairline-soft);
+  }
+  .team-hero-frame {
+    background-color: var(--color-canvas-elevated);
+  }
+
+  /* Scroll animation — GPU-only properties */
+  .scroll-animate {
+    will-change: opacity, transform;
+  }
+
+  /* Card hover — separate inner wrapper, no conflict with scroll */
+  .card-hover {
+    will-change: transform;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: inherit;
+  }
+  .card-hover:hover {
+    transform: translateY(-6px);
+  }
+
+  /* Photo zoom — smooth, non-conflicting */
+  .frame-img {
+    will-change: transform;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .card-hover:hover .frame-img {
+    transform: scale(1.05);
+  }
+</style>

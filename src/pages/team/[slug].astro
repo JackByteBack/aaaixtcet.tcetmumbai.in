@@ -1,0 +1,175 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const members = await getCollection('team');
+  return members.map((member) => ({
+    params: { slug: member.id },
+    props: { member },
+  }));
+}
+
+const { member } = Astro.props;
+const { Content } = await render(member);
+---
+
+<Layout
+  title={member.data.name}
+  description={`${member.data.name} — ${member.data.role} at TCET AAAI.`}
+>
+  <Navbar />
+
+  <article class="bg-canvas">
+    <!-- Hero section -->
+    <div class="border-b border-hairline bg-canvas">
+      <div class="mx-auto max-w-[1200px] px-6 py-6 md:py-10">
+        <!-- Back link -->
+        <a href="/team" class="mb-6 inline-flex items-center gap-1 text-sm text-mute no-underline transition-colors hover:text-ink">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 12H5"></path>
+            <path d="M12 19l-7-7 7-7"></path>
+          </svg>
+          Back to Team
+        </a>
+
+        <div class="flex flex-col items-center gap-8 sm:flex-row sm:items-start">
+          <!-- Photo -->
+          <div class="shrink-0">
+            <div class="h-40 w-40 overflow-hidden rounded-2xl border-4 border-link p-1 sm:h-48 sm:w-48">
+              <div class="flex h-full w-full items-center justify-center overflow-hidden rounded-xl bg-hairline-soft">
+                {member.data.photo ? (
+                  <img src={member.data.photo} alt={member.data.name} class="h-full w-full object-cover" />
+                ) : (
+                  <span class="text-6xl font-bold text-mute">{member.data.name.charAt(0)}</span>
+                )}
+              </div>
+            </div>
+          </div>
+
+          <!-- Info -->
+          <div class="min-w-0 flex-1 text-center sm:text-left">
+            <div class="mb-3 inline-flex items-center gap-1.5 rounded-full bg-ink px-3 py-1 text-xs font-medium text-on-primary">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+              {member.data.role}
+            </div>
+
+            <h1 class="mb-4 font-semibold text-ink" style="font-size: clamp(1.75rem, 4vw, 2.5rem); line-height: 1.15; letter-spacing: -0.04em;">
+              {member.data.name}
+            </h1>
+
+            {member.data.bio && (
+              <p class="mb-6 text-body" style="font-size: 1.05rem; line-height: 1.7;">
+                {member.data.bio}
+              </p>
+            )}
+
+            <!-- Social links -->
+            <div class="flex gap-3 justify-center sm:justify-start">
+              {member.data.linkedin && (
+                <a
+                  href={member.data.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex h-10 w-10 items-center justify-center rounded-full border border-hairline bg-canvas-elevated text-mute transition-all duration-300 hover:border-ink hover:bg-ink hover:text-on-primary"
+                  aria-label={`${member.data.name} LinkedIn`}
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect x="2" y="9" width="4" height="12"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                  </svg>
+                </a>
+              )}
+              {member.data.instagram && (
+                <a
+                  href={member.data.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex h-10 w-10 items-center justify-center rounded-full border border-hairline bg-canvas-elevated text-mute transition-all duration-300 hover:border-ink hover:bg-ink hover:text-on-primary"
+                  aria-label={`${member.data.name} Instagram`}
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"></circle>
+                  </svg>
+                </a>
+              )}
+              {member.data.email && (
+                <a
+                  href={`mailto:${member.data.email}`}
+                  class="flex h-10 w-10 items-center justify-center rounded-full border border-hairline bg-canvas-elevated text-mute transition-all duration-300 hover:border-ink hover:bg-ink hover:text-on-primary"
+                  aria-label={`Email ${member.data.name}`}
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                    <path d="M22 7l-10 7L2 7"></path>
+                  </svg>
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content area -->
+    <div class="mx-auto max-w-[1200px] px-6 py-10 md:py-14">
+      <div class="grid gap-10 lg:grid-cols-[1fr_320px] lg:gap-14">
+        <!-- Main content -->
+        <div class="prose max-w-none">
+          <Content />
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="lg:sticky lg:top-20 lg:self-start">
+          <!-- Working Community -->
+          {member.data.workingCommunity && member.data.workingCommunity.length > 0 && (
+            <div class="rounded-2xl border border-hairline bg-canvas-elevated p-6">
+              <h3 class="mb-4 text-sm font-semibold text-ink">Working Community</h3>
+              <div class="flex flex-col gap-2">
+                {member.data.workingCommunity.map((area) => (
+                  <div class="flex items-center gap-2.5 text-sm text-body">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-link">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                    <span>{area}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <!-- Quick Info -->
+          <div class="mt-4 rounded-2xl border border-hairline bg-canvas-elevated p-6">
+            <h3 class="mb-4 text-sm font-semibold text-ink">Quick Info</h3>
+            <div class="flex flex-col gap-3 text-sm">
+              <div class="flex items-center gap-2.5 text-body">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-mute">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span>{member.data.role}</span>
+              </div>
+              <div class="flex items-center gap-2.5 text-body">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-mute">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                  <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                </svg>
+                <span>TCET AAAI</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </article>
+
+  <Footer />
+</Layout>

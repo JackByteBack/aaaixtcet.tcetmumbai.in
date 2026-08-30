@@ -1,0 +1,21 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import TeamSection from '../../components/TeamSection.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const members = await getCollection('team');
+const sortedMembers = members.sort((a, b) => a.data.order - b.data.order);
+---
+
+<Layout
+  title="Team"
+  description="Meet the Core Committee 2026–2027 of TCET AAAI — the team driving the AI community at TCET."
+>
+  <Navbar />
+
+  <TeamSection members={sortedMembers} />
+
+  <Footer />
+</Layout>
