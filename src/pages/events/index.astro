@@ -69,7 +69,7 @@ const pastEvents = allEvents
               category={event.data.category}
               href={`/events/${event.id}`}
               registrationUrl={event.data.registrationUrl}
-              backgroundImage={event.id === 'intro-to-ml-workshop' ? '/images/among us ehe.jpg' : undefined}
+              backgroundImage={event.id === 'intro-to-ml-workshop' ? '/images/image.png' : event.id === 'murder-among-us' ? '/images/card-image.png' : undefined}
             />
           ))}
         </div>
@@ -94,7 +94,7 @@ const pastEvents = allEvents
               description={event.data.description}
               category={event.data.category}
               href={`/events/${event.id}`}
-              backgroundImage={event.id === 'intro-to-ml-workshop' ? '/images/among us ehe.jpg' : undefined}
+              backgroundImage={event.id === 'intro-to-ml-workshop' ? '/images/image.png' : undefined}
             />
           ))}
         </div>
