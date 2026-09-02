@@ -1,5 +1,5 @@
 ---
-name: "Dr. Sandeep Vishwakarma"
+name: "Sandeep Vishwakarma"
 role: "Faculty Sponsor"
 group: "faculty"
 weight: "solid"
@@ -9,6 +9,6 @@ workingCommunity:
   - "Academic Guidance"
   - "Chapter Oversight"
   - "Student Mentorship"
-order: 0
+order: 1
 linkedin: "https://www.linkedin.com/login"
 ---

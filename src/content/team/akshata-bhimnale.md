@@ -9,6 +9,6 @@ workingCommunity:
   - "Academic Support"
   - "Technical Guidance"
   - "Student Development"
-order: 0
+order: 3
 linkedin: "https://www.linkedin.com/login"
 ---

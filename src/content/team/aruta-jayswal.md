@@ -9,6 +9,6 @@ workingCommunity:
   - "Student Engagement"
   - "Academic Coordination"
   - "Mentorship"
-order: 0
+order: 2
 linkedin: "https://www.linkedin.com/login"
 ---
