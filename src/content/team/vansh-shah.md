@@ -10,7 +10,7 @@ workingCommunity:
   - "Outreach"
   - "Brand Communication"
 order: 7
-photo: "/images/vansh-shah.jpg"
+photo: "/images/team/vansh-shah.jpg"
 linkedin: "https://www.linkedin.com/login"
 github: "https://github.com/login"
 ---

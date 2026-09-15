@@ -10,7 +10,7 @@ workingCommunity:
   - "Brand Identity"
   - "Creative Campaigns"
 order: 6
-photo: "/images/vidya-suthar.jpg"
+photo: "/images/team/vidya-suthar.jpg"
 linkedin: "https://www.linkedin.com/login"
 github: "https://github.com/login"
 ---

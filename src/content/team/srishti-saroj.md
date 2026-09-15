@@ -10,7 +10,7 @@ workingCommunity:
   - "Team Leadership"
   - "Strategic Decision Making"
 order: 1
-photo: "/images/srishti-saroj.jpg"
+photo: "/images/team/srishti-saroj.jpg"
 linkedin: "https://www.linkedin.com/login"
 github: "https://github.com/login"
 ---

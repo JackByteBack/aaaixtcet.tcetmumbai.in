@@ -10,7 +10,7 @@ workingCommunity:
   - "Industry Relations"
   - "Partnership Development"
 order: 8
-photo: "/images/pankaj-pandey.jpg"
+photo: "/images/team/pankaj-pandey.jpg"
 linkedin: "https://www.linkedin.com/login"
 github: "https://github.com/login"
 ---
