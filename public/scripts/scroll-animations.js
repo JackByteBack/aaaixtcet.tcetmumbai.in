@@ -11,8 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        // Optional: unobserve after animation
-        // observer.unobserve(entry.target);
+        observer.unobserve(entry.target);
       }
     });
   }, observerOptions);
@@ -49,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const isNumber = /^\d+/.test(target);
     
     if (!isNumber) {
-      // For non-numeric values like "200+" or "2023"
       element.textContent = target;
       return;
     }
@@ -88,24 +86,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Navbar background change on scroll
+  // Throttled scroll handler for navbar and parallax
+  let ticking = false;
   const navbar = document.querySelector('nav');
-  if (navbar) {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        navbar.classList.add('shadow-sm');
-      } else {
-        navbar.classList.remove('shadow-sm');
-      }
-    });
-  }
-
-  // Parallax effect for hero gradient
   const heroGradient = document.querySelector('.hero-gradient');
-  if (heroGradient) {
-    window.addEventListener('scroll', () => {
-      const scrolled = window.scrollY;
-      heroGradient.style.transform = `translate(${scrolled * 0.1}px, ${scrolled * 0.05}px)`;
-    });
-  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        const scrolled = window.scrollY;
+        
+        if (navbar) {
+          if (scrolled > 50) {
+            navbar.classList.add('shadow-sm');
+          } else {
+            navbar.classList.remove('shadow-sm');
+          }
+        }
+        
+        if (heroGradient) {
+          heroGradient.style.transform = `translate(${scrolled * 0.1}px, ${scrolled * 0.05}px)`;
+        }
+        
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
 });

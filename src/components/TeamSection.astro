@@ -116,7 +116,7 @@ function getIcon(role: string): string {
                     : 'border-ink'
                 }`} style="aspect-ratio: 3/4;">
                   {member.data.photo ? (
-                    <img src={member.data.photo} alt={member.data.name} class="frame-img h-full w-full object-cover" loading="lazy" />
+                    <img src={member.data.photo} alt={member.data.name} class="frame-img h-full w-full object-cover" loading="lazy" decoding="async" />
                   ) : (
                     <div class="flex h-full w-full items-center justify-center bg-hairline-soft">
                       <span class="text-4xl font-black text-muted">{member.data.name.split(' ').map(n => n[0]).join('')}</span>
