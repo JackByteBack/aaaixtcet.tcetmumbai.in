@@ -84,7 +84,7 @@ function getIcon(role: string): string {
   tier.members.length > 0 && (
     <section class="border-t border-hairline bg-canvas">
       <div class="mx-auto max-w-[1200px] px-6 py-12 md:py-16">
-        <span class="scroll-animate mb-5 inline-block rounded-full bg-ink px-4 py-1.5 text-[0.65rem] font-extrabold uppercase tracking-widest text-on-primary">
+        <span class="scroll-animate mb-5 inline-block rounded-full bg-ink px-4 py-1.5 text-[0.7rem] font-extrabold uppercase tracking-widest text-on-primary">
           {tier.label}
         </span>
         <div class="tier-box rounded-3xl border-2 border-ink p-8 md:p-12">
@@ -96,7 +96,7 @@ function getIcon(role: string): string {
                 <h3 class="mb-2 text-base font-black uppercase tracking-wide text-ink sm:text-lg">{member.data.name}</h3>
 
                 <!-- Role Badge -->
-                <div class={`mb-4 inline-flex w-fit items-center gap-1.5 rounded-full px-3 py-1 text-[0.65rem] font-bold uppercase tracking-wider ${
+                <div class={`mb-4 inline-flex w-fit items-center gap-1.5 rounded-full px-3 py-1 text-[0.7rem] font-bold uppercase tracking-wider ${
                   member.data.weight === 'solid'
                     ? 'bg-link text-ink border-2 border-link'
                     : member.data.weight === 'pale'
@@ -147,7 +147,7 @@ function getIcon(role: string): string {
                       href={member.data.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      class={`flex h-9 w-9 items-center justify-center rounded-lg border-2 border-ink text-ink no-underline transition-all hover:bg-ink hover:text-on-primary ${
+                      class={`flex h-11 w-11 items-center justify-center rounded-lg border-2 border-ink text-ink no-underline transition-all hover:bg-ink hover:text-on-primary ${
                         member.data.weight === 'solid'
                           ? 'bg-link'
                           : member.data.weight === 'pale'
@@ -168,7 +168,7 @@ function getIcon(role: string): string {
                       href={member.data.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      class={`flex h-9 w-9 items-center justify-center rounded-lg border-2 border-ink text-ink no-underline transition-all hover:bg-ink hover:text-on-primary ${
+                      class={`flex h-11 w-11 items-center justify-center rounded-lg border-2 border-ink text-ink no-underline transition-all hover:bg-ink hover:text-on-primary ${
                         member.data.weight === 'solid'
                           ? 'bg-link'
                           : member.data.weight === 'pale'

@@ -50,7 +50,7 @@ const currentPath = Astro.url.pathname;
         <button
           id="mobile-menu-toggle"
           class:list={[
-            "flex h-8 w-8 items-center justify-center rounded-md border md:hidden",
+            "flex h-11 w-11 items-center justify-center rounded-md border md:hidden",
             dark ? "border-[#3a3a3a] bg-[#1a1a1a] text-white" : "border-white/20 bg-white/10 text-white"
           ]}
           aria-label="Toggle menu"
@@ -74,7 +74,7 @@ const currentPath = Astro.url.pathname;
           <a
             href={link.href}
             class:list={[
-              'px-4 py-2.5 text-sm no-underline transition-colors',
+              'px-4 py-3.5 text-sm no-underline transition-colors min-h-[44px] flex items-center',
               currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href))
                 ? dark ? 'bg-[#1a1a1a] text-white font-semibold' : 'bg-white/10 text-white font-semibold'
                 : dark ? 'text-gray-400 hover:bg-[#1a1a1a] hover:text-white' : 'text-white/70 hover:bg-white/10 hover:text-white',
@@ -127,5 +127,15 @@ const currentPath = Astro.url.pathname;
 
   menu?.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', closeMenu);
+  });
+
+  document.addEventListener('click', (e) => {
+    if (isOpen && !menu?.contains(e.target as Node) && !toggle?.contains(e.target as Node)) {
+      closeMenu();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && isOpen) closeMenu();
   });
 </script>
