@@ -41,8 +41,11 @@ const fullTitle = title === siteTitle ? title : `${title} | ${siteTitle}`;
     <meta name="twitter:image" content={new URL(image, Astro.site)} />
 
     <link rel="canonical" href={canonicalURL} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="icon" href="/favicon.ico" />
+    <link rel="manifest" href="/site.webmanifest" />
 
     <!-- Geist Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -62,7 +65,7 @@ const fullTitle = title === siteTitle ? title : `${title} | ${siteTitle}`;
       "name": "TCET AAAI",
       "alternateName": "Thakur College of Engineering & Technology - Association for the Advancement of Artificial Intelligence",
       "url": "https://tcetaaai.tcetmumbai.in",
-      "logo": "https://tcetaaai.tcetmumbai.in/favicon.svg",
+      "logo": "https://tcetaaai.tcetmumbai.in/apple-touch-icon.png",
       "description": "The official student chapter of the Association for the Advancement of Artificial Intelligence (AAAI) at Thakur College of Engineering & Technology, Mumbai.",
       "address": {
         "@type": "PostalAddress",

@@ -10,6 +10,7 @@ workingCommunity:
   - "Budget Management"
   - "Resource Allocation"
 order: 4
+photo: "/images/sunidhi-singh.jpg"
 linkedin: "https://www.linkedin.com/login"
 github: "https://github.com/login"
 ---

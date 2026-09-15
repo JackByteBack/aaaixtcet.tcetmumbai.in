@@ -10,6 +10,7 @@ workingCommunity:
   - "Administrative Coordination"
   - "Communication"
 order: 3
+photo: "/images/arunima-singh.jpg"
 linkedin: "https://www.linkedin.com/login"
 github: "https://github.com/login"
 ---

@@ -10,6 +10,7 @@ workingCommunity:
   - "Chapter Development"
   - "Member Engagement"
 order: 2
+photo: "/images/astha-sahu.jpg"
 linkedin: "https://www.linkedin.com/login"
 github: "https://github.com/login"
 ---
