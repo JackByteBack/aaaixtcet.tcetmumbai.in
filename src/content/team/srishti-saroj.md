@@ -1,5 +1,5 @@
 ---
-name: "Srishti Saroj"
+name: "Shristi Saroj"
 role: "Chairperson"
 group: "core"
 weight: "solid"

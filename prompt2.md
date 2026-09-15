@@ -10,7 +10,7 @@ This replaces/updates the previous committee listing. Source: official departmen
 
 | Designation      | Name          | Div & Roll No. |
 | ---------------- | ------------- | -------------- |
-| Chairperson      | Srishti Saroj | B-54           |
+| Chairperson      | Shristi Saroj | B-54           |
 | Vice-Chairperson | Astha Sahu    | B-53           |
 | Secretary        | Arunima Singh | C-16           |
 | Treasurer        | Sunidhi Singh | C-22           |
