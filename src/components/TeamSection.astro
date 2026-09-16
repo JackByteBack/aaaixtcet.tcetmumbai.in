@@ -17,7 +17,7 @@ interface Props {
   members: Member[];
 }
 
-const { members } = Astro.props;
+const { members = [] } = Astro.props;
 
 const tiers = [
   { key: 'faculty' as const, label: 'FACULTY MENTORS & LEADERS' },
@@ -26,7 +26,7 @@ const tiers = [
 
 const tieredMembers = tiers.map(t => ({
   ...t,
-  members: members.filter(m => m.data.group === t.key).sort((a, b) => a.data.order - b.data.order),
+  members: members.filter(m => m.data.group === t.key).sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0)),
 }));
 
 const roleIcons: Record<string, string> = {
@@ -114,9 +114,9 @@ function getIcon(role: string): string {
                     : member.data.weight === 'pale'
                     ? 'border-link/30'
                     : 'border-ink'
-                }`} style="aspect-ratio: 3/4;">
+                }`} style="aspect-ratio: 3/4; position: relative;">
                   {member.data.photo ? (
-                    <img src={member.data.photo} alt={member.data.name} class="frame-img h-full w-full object-cover" loading="lazy" decoding="async" />
+                    <img src={member.data.photo} alt={member.data.name} class="frame-img" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center;" loading="lazy" decoding="async" />
                   ) : (
                     <div class="flex h-full w-full items-center justify-center bg-hairline-soft">
                       <span class="text-4xl font-black text-muted">{member.data.name.split(' ').map(n => n[0]).join('')}</span>
@@ -208,7 +208,6 @@ function getIcon(role: string): string {
 
   /* Card hover — separate inner wrapper, no conflict with scroll */
   .card-hover {
-    will-change: transform;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: inherit;
   }
@@ -218,7 +217,6 @@ function getIcon(role: string): string {
 
   /* Photo zoom — smooth, non-conflicting */
   .frame-img {
-    will-change: transform;
     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
   .card-hover:hover .frame-img {
