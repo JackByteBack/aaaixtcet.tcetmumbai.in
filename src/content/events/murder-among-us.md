@@ -5,7 +5,7 @@ date: 2026-09-20
 time: "TBA"
 venue: "TCET Campus"
 upcoming: true
-registrationUrl: "https://docs.google.com/forms/d/1oS8OU-dTyPFbnDN2j0WFSv6AFruC_AmByLN_yRlfWh8/viewform"
+registrationUrl: "https://www.parkadda.com/events/book?event_id=ZEPHYR26&package_code=AAAI_AMONG_US"
 category: "Event"
 accentColor: "#e74c3c"
 heroGradient: "linear-gradient(135deg, #e74c3c, #c0392b)"
