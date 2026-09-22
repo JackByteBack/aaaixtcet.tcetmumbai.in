@@ -217,6 +217,7 @@ const gradient = event.data.heroGradient || `linear-gradient(135deg, ${accent}, 
             </div>
 
             <!-- Share -->
+            {!event.data.hideShare && (
             <div class="mt-4 rounded-2xl border border-[#2a2a2a] bg-[#141414] p-6">
               <h3 class="mb-3 text-sm font-semibold text-[#f0f0f0]">Share</h3>
               <div class="flex gap-2">
@@ -252,6 +253,7 @@ const gradient = event.data.heroGradient || `linear-gradient(135deg, ${accent}, 
                 )}
               </div>
             </div>
+            )}
           </aside>
         </div>
       </div>
