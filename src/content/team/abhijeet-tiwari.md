@@ -8,4 +8,5 @@ bio: "Handles research and development for the chapter — exploring new ideas, 
 workingCommunity:
   - "Research & Development"
 order: 10
+photo: "/images/team/abhijeet-tiwari.png"
 ---
