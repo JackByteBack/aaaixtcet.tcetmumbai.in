@@ -9,4 +9,5 @@ workingCommunity:
   - "Research & Development"
 order: 10
 photo: "/images/team/abhijeet-tiwari.png"
+linkedin: "https://www.linkedin.com/in/abhijeet-tiwari-4586a6388/"
 ---
