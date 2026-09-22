@@ -1,5 +1,5 @@
 ---
-title: "AI Hackathon 2026"
+title: "The Midnight Express"
 description: "A 24-hour hackathon where teams build innovative AI solutions to real-world problems. Prizes worth ₹50,000!"
 date: 2026-10-05
 time: "10:00 AM - 10:00 AM (Next Day)"
