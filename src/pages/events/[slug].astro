@@ -21,6 +21,8 @@ const formattedDate = event.data.date.toLocaleDateString('en-US', {
   day: 'numeric',
 });
 
+const displayDate = event.data.dateLabel ?? formattedDate;
+
 const accent = event.data.accentColor;
 const gradient = event.data.heroGradient || `linear-gradient(135deg, ${accent}, ${accent}cc)`;
 ---
@@ -71,7 +73,7 @@ const gradient = event.data.heroGradient || `linear-gradient(135deg, ${accent}, 
               {event.data.category}
             </span>
           )}
-          <time class="text-sm text-white/80">{formattedDate}</time>
+          <time class="text-sm text-white/80">{displayDate}</time>
         </div>
 
         <h1
@@ -158,7 +160,7 @@ const gradient = event.data.heroGradient || `linear-gradient(135deg, ${accent}, 
                     <line x1="8" y1="2" x2="8" y2="6"></line>
                     <line x1="3" y1="10" x2="21" y2="10"></line>
                   </svg>
-                  <span>{formattedDate}</span>
+                  <span>{displayDate}</span>
                 </div>
 
                 {event.data.time && (

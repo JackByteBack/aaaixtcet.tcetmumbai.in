@@ -2,6 +2,7 @@
 interface Props {
   title: string;
   date: string;
+  dateLabel?: string;
   time?: string;
   venue?: string;
   description: string;
@@ -11,9 +12,9 @@ interface Props {
   backgroundImage?: string;
 }
 
-const { title, date, time, venue, description, category, href, registrationUrl, backgroundImage } = Astro.props;
+const { title, date, dateLabel, time, venue, description, category, href, registrationUrl, backgroundImage } = Astro.props;
 
-const formattedDate = new Date(date).toLocaleDateString('en-US', {
+const formattedDate = dateLabel ?? new Date(date).toLocaleDateString('en-US', {
   year: 'numeric',
   month: 'long',
   day: 'numeric',

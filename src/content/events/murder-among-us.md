@@ -1,7 +1,8 @@
 ---
 title: "Murder Among Us"
 description: "An immersive murder mystery game — trust no one, question everyone, find the killer."
-date: 2026-09-20
+date: 2026-09-28
+dateLabel: "28, 29 September & 1 October 2026"
 time: "TBA"
 venue: "TCET Campus"
 upcoming: true

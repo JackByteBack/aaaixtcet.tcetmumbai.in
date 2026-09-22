@@ -157,6 +157,7 @@ Event content in Markdown...
 | `title` | string | Yes | Event title |
 | `description` | string | Yes | Short description (used in meta tags) |
 | `date` | date | Yes | Event date |
+| `dateLabel` | string | No | Custom date text shown instead of `date` (e.g., "28, 29 September & 1 October 2026") |
 | `time` | string | No | Time range |
 | `venue` | string | No | Location |
 | `upcoming` | boolean | No | Show on events page (default: false) |

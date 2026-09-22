@@ -8,6 +8,7 @@ const events = defineCollection({
     title: z.string(),
     description: z.string(),
     date: z.coerce.date(),
+    dateLabel: z.string().optional(),
     time: z.string().optional(),
     venue: z.string().optional(),
     upcoming: z.boolean().default(false),
