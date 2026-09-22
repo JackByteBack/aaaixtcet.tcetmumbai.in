@@ -11,6 +11,6 @@ workingCommunity:
   - "Resource Allocation"
 order: 4
 photo: "/images/team/sunidhi-singh.jpg"
-linkedin: "https://www.linkedin.com/login"
-github: "https://github.com/login"
+linkedin: "https://www.linkedin.com/in/sunidhi-singh-380a94354/"
+github: "https://github.com/Am-I-Sun"
 ---
