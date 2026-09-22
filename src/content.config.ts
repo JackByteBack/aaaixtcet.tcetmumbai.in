@@ -21,7 +21,6 @@ const events = defineCollection({
     tags: z.array(z.string()).default([]),
     github: z.string().optional(),
     linkedin: z.string().optional(),
-    hideShare: z.boolean().default(false),
   }),
 });
 

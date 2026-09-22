@@ -158,7 +158,6 @@ Event content in Markdown...
 | `description` | string | Yes | Short description (used in meta tags) |
 | `date` | date | Yes | Event date |
 | `dateLabel` | string | No | Custom date text shown instead of `date` (e.g., "28, 29 September & 1 October 2026") |
-| `hideShare` | boolean | No | Hide the Share (GitHub/LinkedIn) box on the event page (default: false) |
 | `time` | string | No | Time range |
 | `venue` | string | No | Location |
 | `upcoming` | boolean | No | Show on events page (default: false) |

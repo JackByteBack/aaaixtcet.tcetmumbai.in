@@ -11,7 +11,6 @@ category: "Event"
 accentColor: "#e74c3c"
 heroGradient: "linear-gradient(135deg, #e74c3c, #c0392b)"
 tags: ["Mystery", "Teamwork", "Critical Thinking", "Interactive"]
-hideShare: true
 ---
 
 ## About the Event

@@ -216,44 +216,6 @@ const gradient = event.data.heroGradient || `linear-gradient(135deg, ${accent}, 
               )}
             </div>
 
-            <!-- Share -->
-            {!event.data.hideShare && (
-            <div class="mt-4 rounded-2xl border border-[#2a2a2a] bg-[#141414] p-6">
-              <h3 class="mb-3 text-sm font-semibold text-[#f0f0f0]">Share</h3>
-              <div class="flex gap-2">
-                {event.data.github && (
-                  <a
-                    href={event.data.github.startsWith('http') ? event.data.github : `https://github.com/${event.data.github}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="flex-1 rounded-full border border-[#2a2a2a] bg-[#1a1a1a] py-3 text-center text-xs font-medium text-[#b0b0b0] no-underline transition-colors hover:bg-[#2a2a2a] hover:text-[#f0f0f0] min-h-[44px] flex items-center justify-center"
-                  >
-                    GitHub
-                  </a>
-                )}
-                {event.data.linkedin && (
-                  <a
-                    href={event.data.linkedin.startsWith('http') ? event.data.linkedin : `https://linkedin.com/in/${event.data.linkedin}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="flex-1 rounded-full border border-[#2a2a2a] bg-[#1a1a1a] py-3 text-center text-xs font-medium text-[#b0b0b0] no-underline transition-colors hover:bg-[#2a2a2a] hover:text-[#f0f0f0] min-h-[44px] flex items-center justify-center"
-                  >
-                    LinkedIn
-                  </a>
-                )}
-                {!event.data.github && !event.data.linkedin && (
-                  <a
-                    href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(Astro.url.href)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="flex-1 rounded-full border border-[#2a2a2a] bg-[#1a1a1a] py-3 text-center text-xs font-medium text-[#b0b0b0] no-underline transition-colors hover:bg-[#2a2a2a] hover:text-[#f0f0f0] min-h-[44px] flex items-center justify-center"
-                  >
-                    LinkedIn
-                  </a>
-                )}
-              </div>
-            </div>
-            )}
           </aside>
         </div>
       </div>
